@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title th:text="${post.getTitle()}">Home</title>
+    <link href="" rel="stylesheet" th:href="@{../css/main.css}"/>
+</head>
+<body>
+<div th:class="header-container" th:include="nav"></div>
+<div class="content-container">
+    <main class="post-content">
+        <div class="post">
+            <div class="post-info">
+                <p class="date"
+                   th:text="${post.getDateCreate()}">JULY 23,
+                    2022</p>
+                <p class="author" th:text="${post.getAuthor()}">Inthava Xaiyaloun</p>
+
+                <p class="title" th:text="${post.getTitle()}">My new journey as a bootcamp student.</p>
+                <p class="description" th:text="${post.getDescription()}">
+                    After several months of learning in the Frontend Developer Career
+                    Path, I've made the big jump over to the Bootcamp to get expert
+                    code reviews of my Solo Projects and meet like-minded peers.
+                </p>
+            </div>
+            <img alt="" class="mt-2" src="../assets/article-image-01.png"/>
+        </div>
+        <div class="main-content">
+            <div th:utext="${post.getContent()}"></div>
+            <div class="line-x"></div>
+        </div>
+    </main>
+    <div class="post-relate">
+        <h2 class="related-head">Related Post</h2>
+        <div class="post-list-related">
+            <div class="post-related" th:each="post : ${posts}">
+                <img alt="" src="../assets/article-image-01.png" th:src="@{../assets/article-image-hero.png}"/>
+                <div class="post-info">
+                    <p class="date"
+                       th:text="${post.getDateCreate()}">JULY
+                        23, 2022</p>
+                    <a href="#" th:href="@{/read/{id}(id=${post.getId()})}">
+                        <p class="title" th:text="${post.getTitle()}">My new journey as a bootcamp student.</p>
+                        <p class="description" th:text="${post.getDescription()}">
+                            After several months of learning in the Frontend Developer
+                            Career Path, I've made the big jump over to the Bootcamp to
+                            get expert code reviews of my Solo Projects and meet
+                            like-minded peers.
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:class="footer-container" th:include="footer"></div>
+</body>
+</html>

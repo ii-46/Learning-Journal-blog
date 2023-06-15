@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Home</title>
+
+    <link href="css/dashboard.css" rel="stylesheet" th:href="@{css/dashboard.css}"/>
+</head>
+<body>
+<div th:class="header-container" th:include="dashboard_nav"></div>
+<div class="content-container">
+    <div class="new-post-container">
+        <div class="section-info">
+            <h1 class="headlisectionne">Manage your contents</h1>
+            <div class="create-post">
+                <a class="btn btn-filled" href="new_post.html" th:href="@{/newpost}">create post</a>
+            </div>
+        </div>
+
+        <main class="post-list">
+            <div class="post" th:each="post : ${posts}">
+                <img alt="" src="./assets/article-image-01.png"/>
+                <div class="post-info">
+                    <p class="date"
+                       th:text="${post.getDateCreate()}">JULY
+                        23, 2022</p>
+                    <p class="date" th:text="${post.getStatus()}">Public</p>
+                    <p class="title" th:text="${post.getTitle()}">My new journey as a bootcamp student.</p>
+
+                    <div class="inline-btn-group">
+                        <a class="btn btn-danger" href="" th:href="@{/delete/{id}(id=${post.getId()})}">DELETE</a>
+                        <a class="btn btn-filled" href="" th:href="@{/edit/{id}(id=${post.getId()})}">EDIT</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+<div th:class="footer-container" th:include="footer"></div>
+<script src="js/main.js" th:src="@{js/main.js}"></script>
+</body>
+</html>

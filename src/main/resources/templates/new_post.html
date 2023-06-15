@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title th:if="${isNewPost}">Create new post</title>
+    <title th:unless="${isNewPost}">Update post</title>
+
+    <link href="css/dashboard.css" rel="stylesheet" th:href="@{/css/dashboard.css}"/>
+</head>
+<body>
+<div th:class="header-container" th:include="dashboard_nav"></div>
+<div class="content-container">
+    <div class="form-container">
+        <p class="form-headline" th:if="${isNewPost}">New post</p>
+        <p class="form-headline" th:unless="${isNewPost}">Update post</p>
+        <p class="form-subheadline" th:if="${isNewPost}">write content and the hit public!</p>
+        <p class="form-subheadline" th:unless="${isNewPost}">something wrong or misspelling or Extra content!</p>
+        <form action="" method="post" th:action="@{/newpost}" th:object="${post}">
+            <input name="id" th:value="*{id}" type="hidden"/>
+            <label class="label" for="title">title *</label>
+            <input class="input" id="title" placeholder="what is this post?" required th:field="*{title}" type="text"/>
+
+            <label class="label" for="description">description *</label>
+            <input class="input" id="description" placeholder="summery what this post is about" required
+                   th:field="*{description}"
+                   type="text"/>
+
+            <label class="label" for="category">category *</label>
+            <input class="input" id="category" placeholder="what category is this post?" required th:field="*{category}"
+                   type="text"/>
+
+            <label class="label" for="tags">tags *</label>
+            <input class="input" id="tags" placeholder="help people easily find your post ex: dog, cute dog, hot dog"
+                   required th:field="*{tags}" type="text"/>
+
+            <label class="label" for="textarea">content *</label>
+            <textarea cols="30" id="textarea" required rows="10" th:field="*{content}"></textarea>
+            <div class="new-post">
+                <button class="btn-filled btn" th:if="${isNewPost}">public post</button>
+                <button class="btn-filled btn" th:unless="${isNewPost}">update post</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:class="footer-container" th:include="footer"></div>
+<script src="./plugin/ckeditor/ckeditor.js" th:src="@{/plugin/ckeditor/ckeditor.js}"></script>
+<script>
+    CKEDITOR.replace("textarea");
+</script>
+<script src="js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>

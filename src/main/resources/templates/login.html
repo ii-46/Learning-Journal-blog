@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Home</title>
+
+    <link href="css/dashboard.css" rel="stylesheet" th:href="@{css/dashboard.css}"/>
+</head>
+<body style="height: 100vh">
+<div th:class="header-container" th:include="nav"></div>
+<div class="content-container login-container">
+    <div class="form-container">
+        <p class="form-headline">
+            <img alt="logo" src="./assets/logo.svg" th:src="@{/assets/logo.svg}">
+        </p>
+        <p class="form-headline">Login to My Learning Journey</p>
+        <p class="form-subheadline">Let's make the world full of knowledge</p>
+        <form action="" method="post" th:action="@{/login}">
+            <label class="label" for="email">email *</label>
+            <input
+                    class="input"
+                    id="email"
+                    name="username"
+                    placeholder="example@email.com"
+                    type="text"
+            />
+            <label class="label" for="password">password *</label>
+            <input
+                    class="input"
+                    id="password"
+                    name="password"
+                    placeholder="type your password"
+                    type="password"
+            />
+
+            <div class="login">
+                <button class="btn-filled btn">login</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:class="footer-container" th:include="footer"></div>
+<script src="./plugin/ckeditor/ckeditor.js" th:src="@{./plugin/ckeditor/ckeditor.js}"></script>
+<script>
+    CKEDITOR.replace("textarea");
+</script>
+<script src="js/main.js" th:src="@{js/main.js}"></script>
+</body>
+</html>
