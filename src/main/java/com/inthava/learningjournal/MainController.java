@@ -89,7 +89,6 @@ public class MainController {
         if (user != null) {
             List<Post> posts = postService.allPost();
             modelMap.addAttribute("posts", posts);
-            System.out.println(posts.get(1).getTitle());
             return "dashboard";
         }
         return "redirect:/login";
@@ -115,6 +114,7 @@ public class MainController {
             post.setDateCreate(LocalDateTime.now());
             post.setAuthor(user.getUsername());
             post.setStatus("public");
+            post.setThumbnail(post.getThumbnail().trim().length() == 0 ? "https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.png" : post.getThumbnail());
             postService.createPost(post);
 
             return "redirect:/dashboard";

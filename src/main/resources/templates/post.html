@@ -35,7 +35,7 @@
         <h2 class="related-head">Related Post</h2>
         <div class="post-list-related">
             <div class="post-related" th:each="post : ${posts}">
-                <img alt="" src="../assets/article-image-01.png" th:src="@{../assets/article-image-hero.png}"/>
+                <img alt="" src="../assets/article-image-01.png" th:src="${post.getThumbnail()}"/>
                 <div class="post-info">
                     <p class="date"
                        th:text="${post.getDateCreate()}">JULY

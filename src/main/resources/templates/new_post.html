@@ -30,6 +30,10 @@
             <input class="input" id="category" placeholder="what category is this post?" required th:field="*{category}"
                    type="text"/>
 
+            <label class="label" for="thumbnail">thumbnail *</label>
+            <input class="input" id="thumbnail" placeholder="thumbnail url" th:field="*{thumbnail}"
+                   type="text"/>
+
             <label class="label" for="tags">tags *</label>
             <input class="input" id="tags" placeholder="help people easily find your post ex: dog, cute dog, hot dog"
                    required th:field="*{tags}" type="text"/>

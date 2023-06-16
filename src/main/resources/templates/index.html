@@ -11,7 +11,7 @@
 <div class="content-container">
     <main class="post-list">
         <div class="post" th:each="post : ${posts}">
-            <img alt="" src="" th:src="@{assets/article-image-hero.png}"/>
+            <img alt="" src="" th:src="${post.getThumbnail()}"/>
             <div class="post-info">
                 <p class="date"
                    th:text="${post.getDateCreate()}">JULY 23,

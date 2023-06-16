@@ -63,12 +63,17 @@ public class Post {
             columnDefinition = "varchar(250)"
     )
     private String category;
+    @Column(
+            name = "thumbnail",
+            columnDefinition = "varchar(250)"
+    )
+    private String thumbnail;
 
 
     public Post() {
     }
 
-    public Post(Long id, String title, String author, LocalDateTime dateCreate, String status, String tags, String content, String description, String category) {
+    public Post(Long id, String title, String author, LocalDateTime dateCreate, String status, String tags, String content, String description, String category, String thumbnail) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -78,6 +83,7 @@ public class Post {
         this.content = content;
         this.description = description;
         this.category = category;
+        this.thumbnail = thumbnail;
     }
 
     public Long getId() {
@@ -150,6 +156,14 @@ public class Post {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     @Override

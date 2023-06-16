@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Home</title>
+    <title>Dashboard</title>
 
     <link href="css/dashboard.css" rel="stylesheet" th:href="@{css/dashboard.css}"/>
 </head>
@@ -20,7 +20,7 @@
 
         <main class="post-list">
             <div class="post" th:each="post : ${posts}">
-                <img alt="" src="./assets/article-image-01.png"/>
+                <img alt="" src="./assets/article-image-01.png" th:src="${post.getThumbnail()}"/>
                 <div class="post-info">
                     <p class="date"
                        th:text="${post.getDateCreate()}">JULY
