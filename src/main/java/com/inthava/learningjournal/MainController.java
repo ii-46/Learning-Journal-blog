@@ -116,7 +116,6 @@ public class MainController {
             post.setStatus("public");
             post.setThumbnail(post.getThumbnail().trim().length() == 0 ? "https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.png" : post.getThumbnail());
             postService.createPost(post);
-
             return "redirect:/dashboard";
         }
         return "redirect:/login";
